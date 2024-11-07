@@ -1,0 +1,4 @@
+name: SnowYard
+version: '${version}'
+main: ru.mrbedrockpy.snowyard.Plugin
+api-version: '1.16'
