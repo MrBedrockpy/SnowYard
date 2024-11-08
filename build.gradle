@@ -1,4 +1,5 @@
 plugins {
+    id 'com.gradleup.shadow' version '8.3.3'
     id 'java'
 }
 
@@ -15,10 +16,18 @@ repositories {
         name = "sonatype"
         url = "https://oss.sonatype.org/content/groups/public/"
     }
+    maven { url 'https://repo.xenondevs.xyz/releases' }
 }
 
 dependencies {
     compileOnly "org.spigotmc:spigot-api:1.16.5-R0.1-SNAPSHOT"
+    implementation("xyz.xenondevs.invui:invui:1.37")
+}
+
+tasks.named('shadowJar', com.github.jengelman.gradle.plugins.shadow.tasks.ShadowJar) {
+    dependencies {
+        exclude(dependency("xyz.xenondevs.invui:invui:1.37"))
+    }
 }
 
 def targetJavaVersion = 8
